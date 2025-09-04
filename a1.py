@@ -20,7 +20,7 @@ Remember: The goal is to LEARN, not just get working code!
 
 """
 MY ORIGINAL AI PROMPT:
-[Paste the prompt you used to generate your problem set here]
+[> "I'm learning Python basics in a high school programming class. I have some experience with [mention your previous programming language if any, or say 'I'm new to programming']. Can you create 5-7 practice problems that cover: > - Variables and basic data types > - Conditionals (if/elif/else) > - Loops (for and while) > - Functions > - Basic list operations > > Make them progressively more challenging. Make sure each problem has clear instructions and example inputs/outputs."]
 
 Example: "I'm learning Python basics in a high school programming class. 
 I have some experience with Java. Can you create 5-7 practice problems that cover..."
