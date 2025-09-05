@@ -47,7 +47,7 @@ def factorial(n: int) -> int:
     while count < n:
         total *= n - count
         count+=1
-        
+    return total
 
 
 T = TypeVar("T")
@@ -64,7 +64,11 @@ def every_other(lst: List[T]) -> List[T]:
     Returns:
         a list of every of other item in the original list starting with the first
     """
-    raise NotImplementedError("every_other")
+    arr: list[lst.length/2]
+    count = 0
+    for i in range(0, lst.length, 2)
+        arr[count] = lst[i]
+    return arr 
 
 def sum_list(lst: List[int]) -> int:
     """Takes a list of numbers, and returns the sum of the numbers in that list. Cannot
@@ -76,7 +80,10 @@ def sum_list(lst: List[int]) -> int:
     Returns:
         the sum of the passed in list
     """
-    raise NotImplementedError("sum_list")
+    total = 0
+    for i in range(lst.length)
+        total += lst[i]
+    return total
 
 
 def mean(lst: List[int]) -> float:
@@ -88,7 +95,12 @@ def mean(lst: List[int]) -> float:
     Returns:
         the mean of the passed in list
     """
-    raise NotImplementedError("mean")
+    count = 0
+    total = 0
+    for i in range(lst.length):
+        total += lst[i]
+        count += 1
+    return total/count
 
 
 def median(lst: List[int]) -> float:
@@ -103,7 +115,9 @@ def median(lst: List[int]) -> float:
     Returns:
         the median of the passed in list
     """
-    raise NotImplementedError("median")
+    for i in range(lst[0], lst.length)
+
+
 
 
 def duck_duck_goose(lst: List[str]) -> List[str]:
@@ -131,6 +145,7 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
 # this line causes the nested code to be skipped if the file is imported instead of run
 if __name__ == "__main__":
     assert absolute(-1) == 1, "absolute of -1 failed"
+    assert absolute(4) == 4, "absolute of 4 failed"
     assert factorial(4) == 24, "factorial of 4 failed"
     assert every_other([1, 2, 3, 4, 5]) == [
         1,
