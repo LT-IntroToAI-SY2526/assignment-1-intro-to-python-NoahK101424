@@ -47,6 +47,7 @@ def factorial(n: int) -> int:
     while count < n:
         total *= n - count
         count+=1
+        n = n + count
     return total
 
 
@@ -64,9 +65,9 @@ def every_other(lst: List[T]) -> List[T]:
     Returns:
         a list of every of other item in the original list starting with the first
     """
-    arr: list[lst.length/2]
+    arr = [len(lst)]
     count = 0
-    for i in range(0, lst.length, 2)
+    for i in range(0, len(lst), 2):
         arr[count] = lst[i]
     return arr 
 
@@ -81,7 +82,7 @@ def sum_list(lst: List[int]) -> int:
         the sum of the passed in list
     """
     total = 0
-    for i in range(lst.length)
+    for i in range(len(lst)):
         total += lst[i]
     return total
 
@@ -97,7 +98,7 @@ def mean(lst: List[int]) -> float:
     """
     count = 0
     total = 0
-    for i in range(lst.length):
+    for i in range(len(lst)):
         total += lst[i]
         count += 1
     return total/count
@@ -115,9 +116,9 @@ def median(lst: List[int]) -> float:
     Returns:
         the median of the passed in list
     """
-    for i in range(lst[0], lst.length)
-
-
+    for i in range(len(lst)):
+        if len(lst)%2 == 0:
+            
 
 
 def duck_duck_goose(lst: List[str]) -> List[str]:
