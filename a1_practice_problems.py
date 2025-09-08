@@ -116,10 +116,9 @@ def median(lst: List[int]) -> float:
     Returns:
         the median of the passed in list
     """
-    for i in range(len(lst)):
-        if len(lst)%2 == 0:
-            
-
+    if len(lst)%2 == 0:
+        return (lst[len(lst)%2] + lst[(len(lst)%2)+1])/2
+    return lst[len(lst)/2]
 
 def duck_duck_goose(lst: List[str]) -> List[str]:
     """Given an list of names (strings), play 'duck duck goose' with it, knocking out
@@ -140,7 +139,17 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     Returns:
         the resulting list after playing duck duck goose
     """
-    raise NotImplementedError("duck_duck_goose")
+    i = 0
+    while(len(lst) > 2):
+        if i%2==0 and i != 0:
+            len.pop(lst[i])
+            i = lst.index(lst[i])
+        i += 1
+        if(i > len(lst)):
+            i = 3 - i
+    return lst
+
+
 
 
 # this line causes the nested code to be skipped if the file is imported instead of run
