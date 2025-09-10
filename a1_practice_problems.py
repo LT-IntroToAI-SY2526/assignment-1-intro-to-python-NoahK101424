@@ -65,11 +65,15 @@ def every_other(lst: List[T]) -> List[T]:
     Returns:
         a list of every of other item in the original list starting with the first
     """
-    arr = [len(lst)]
+    arr = []
     count = 0
     for i in range(0, len(lst), 2):
         arr[count] = lst[i]
     return arr 
+
+    """Mr. berg solution: return lst[::2]
+    [start:stop:step]
+    """
 
 def sum_list(lst: List[int]) -> int:
     """Takes a list of numbers, and returns the sum of the numbers in that list. Cannot
@@ -142,26 +146,18 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     i = 0
     while(len(lst) > 2):
         if i%2==0 and i != 0:
-            len.pop(lst[i])
-            i = lst.index(lst[i])
+            i = lst.index(lst.pop(lst[i]))
         i += 1
-        if(i > len(lst)):
-            i = 3 - i
+        if(lst[i] > len(lst)):
+            i = i%3
     return lst
-
-
-
 
 # this line causes the nested code to be skipped if the file is imported instead of run
 if __name__ == "__main__":
     assert absolute(-1) == 1, "absolute of -1 failed"
     assert absolute(4) == 4, "absolute of 4 failed"
     assert factorial(4) == 24, "factorial of 4 failed"
-    assert every_other([1, 2, 3, 4, 5]) == [
-        1,
-        3,
-        5,
-    ], "every_other of [1,2,3,4,5] failed"
+    assert every_other([1, 2, 3, 4, 5]) == [1,3,5,], "every_other of [1,2,3,4,5] failed"
     assert sum_list([1, 2, 3]) == 6, "sum_list of [1,2,3] failed"
     assert mean([1, 2, 3, 4, 5]) == 3, "mean of [1,2,3,4,5] failed"
     assert median([1, 2, 3, 4, 5]) == 3, "median of [1,2,3,4,5] failed"
