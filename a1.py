@@ -56,16 +56,14 @@ Enter temperature: 68
 Enter unit (C for Celsius, F for Fahrenheit): F
 68°F is equal to 20.0°C
 """
-def temperature_converter():
+def temperature_converter(temp, unit):
     """Interactive temperature converter"""
-    temp = float(input("Enter temperature: ")) #variable for the temp value
-    unit = input("Enter unit (C for Celsius, F for Fahrenheit): ").upper() #variable for user input, ".upper()" converts input to uppercase letters
-    
+
     #calculations to change convert the temperatures depending on whether the user inputs "C" or "F"
-    if unit == 'C':
+    if unit.upper() == 'C':
         fahrenheit = (temp * 9/5) + 32
         print(f"{temp}°C is equal to {fahrenheit}°F")
-    elif unit == 'F':
+    elif unit.upper() == 'F':
         celsius = (temp - 32) * 5/9
         print(f"{temp}°F is equal to {celsius:.1f}°C")
     else:
@@ -304,12 +302,14 @@ print(f"is_even(7): {is_even(7)}")  # Should print False
 
 print("Testing Problem 1:")
 # Add your tests here
+#assert temperature_converter(0, "C") == 32, "temperature_converter failed"
 
 print("\nTesting Problem 2:")
-# Add your tests here
+assert calculate_grade(95) == "A", "calculatre_grade(95) failed"
 
 print("\nTesting Problem 3:")
 # Add your tests here
+assert 
 
 print("\nTesting Problem 4:")
 # Add your tests here
