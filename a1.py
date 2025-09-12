@@ -58,10 +58,10 @@ Enter unit (C for Celsius, F for Fahrenheit): F
 """
 def temperature_converter():
     """Interactive temperature converter"""
-    temp = float(input("Enter temperature: "))
-    unit = input("Enter unit (C for Celsius, F for Fahrenheit): ").upper()
-
+    temp = float(input("Enter temperature: ")) #variable for the temp value
+    unit = input("Enter unit (C for Celsius, F for Fahrenheit): ").upper() #variable for user input, ".upper()" converts input to uppercase letters
     
+    #calculations to change convert the temperatures depending on whether the user inputs "C" or "F"
     if unit == 'C':
         fahrenheit = (temp * 9/5) + 32
         print(f"{temp}°C is equal to {fahrenheit}°F")
@@ -135,12 +135,12 @@ def number_guessing_game():
     print("I'm thinking of a number between 1 and 100. You have 7 guesses.")
     
     while attempts_left > 0:
-        try:
+        try: #allows you to wrap a block of code that might potentially raise an error (an "exception") during its execution.
             guess = int(input("Enter your guess: "))
             attempts_left -= 1
             
             if guess == secret_number:
-                print(f"Correct! You won in {7 - attempts_left} attempts!")
+                print(f"Correct! You won in {7 - attempts_left} attempts!") #f-string, The f prefix allows you to directly insert Python expressions and variables into a string by enclosing them within curly braces {}
                 return
             elif guess > secret_number:
                 if attempts_left > 0:
@@ -153,7 +153,7 @@ def number_guessing_game():
                 else:
                     print("Too low!")
                     
-        except ValueError:
+        except ValueError: #except keyword is used within a try-except block to handle exceptions (errors) that occur during the execution of code.
             print("Please enter a valid number.")
             attempts_left += 1  # Don't penalize for invalid input
     
@@ -182,7 +182,7 @@ result = analyze_text(text)
     """
 def analyze_text(text):
     """Analyze text and return statistics"""
-    # Convert to lowercase and split into words
+    # Convert to lowercase and split into words (by spaces)
     words = text.lower().split()
     
     # Remove punctuation and get clean words
@@ -198,7 +198,7 @@ def analyze_text(text):
     # Find most frequent word
     if clean_words:
         word_counts = Counter(clean_words)
-        most_frequent = word_counts.most_common(1)[0][0]
+        most_frequent = word_counts.most_common(1)[0][0] #most_common is a method of the Counter Class that returns a list of the most common to least common elemets
     else:
         most_frequent = None
     
@@ -241,29 +241,29 @@ total = calculate_total(cart)
 discounted_total = apply_discount(total, 10)
 # Final total after 10% discount: $8.37
 """
-
+#like a constructor in java
 def add_item(cart, item_name, price, quantity):
     """Add item to shopping cart"""
-    item = {
+    item = { #Curly braces are used to create dictionaries, which are unordered collections of key-value pairs OR define sets
         'name': item_name,
         'price': price,
         'quantity': quantity
     }
-    cart.append(item)
+    cart.append(item) #.append() method is used to add a single element to the end of a list.
 
 def remove_item(cart, item_name):
     """Remove item from shopping cart"""
-    for i, item in enumerate(cart):
-        if item['name'].lower() == item_name.lower():
+    for i, item in enumerate(cart): #enumerate() gives you BOTH the position AND the value when looping
+        if item['name'].lower() == item_name.lower(): #checks if the input through "item_name" matches with an item in the cart
             cart.pop(i)
             return True
-    return False
+    return False #if the inputed item doesn't exist, retruns false
 
 def calculate_total(cart):
     """Calculate total price of items in cart"""
     total = 0
     for item in cart:
-        total += item['price'] * item['quantity']
+        total += item['price'] * item['quantity'] #each item OBJECT has a name, price, and quantity (through the constructor), which is then used with the quantity here to get the price of the items in the cart
     return total
 
 def apply_discount(total, discount_percent):
@@ -283,189 +283,6 @@ def display_cart(cart):
     
     total = calculate_total(cart)
     print(f"Total: ${total:.2f}")
-
-"""
-Prolem 6: [Prime Number Analyzer (Functions, Loops, Lists)]
-
-Create a program with the following functions:
-
-is_prime(n) - returns True if n is prime, False otherwise
-find_primes_in_range(start, end) - returns list of all primes in the range
-prime_factorization(n) - returns list of prime factors of n
-largest_prime_factor(n) - returns the largest prime factor of n
-
-Example Input/Output:
-pythonis_prime(17) → True
-is_prime(15) → False
-
-find_primes_in_range(10, 30) → [11, 13, 17, 19, 23, 29]
-
-prime_factorization(60) → [2, 2, 3, 5]
-
-largest_prime_factor(60) → 5
-"""
-def is_prime(n):
-    """Check if a number is prime"""
-    if n < 2:
-        return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-    
-    # Check odd divisors up to sqrt(n)
-    for i in range(3, int(n**0.5) + 1, 2):
-        if n % i == 0:
-            return False
-    return True
-
-def find_primes_in_range(start, end):
-    """Find all prime numbers in a given range"""
-    primes = []
-    for num in range(start, end + 1):
-        if is_prime(num):
-            primes.append(num)
-    return primes
-
-def prime_factorization(n):
-    """Return list of prime factors"""
-    factors = []
-    divisor = 2
-    
-    while divisor * divisor <= n:
-        while n % divisor == 0:
-            factors.append(divisor)
-            n //= divisor
-        divisor += 1
-    
-    if n > 1:
-        factors.append(n)
-    
-    return factors
-
-def largest_prime_factor(n):
-    """Return the largest prime factor"""
-    factors = prime_factorization(n)
-    return max(factors) if factors else None
-
-"""
-Problem 7: [ Student Grade Tracker (Advanced - All Concepts)]
-
-Create a comprehensive student grade tracking system with these features:
-
-Store student data (name, grades list)
-Add/remove students
-Add grades for specific students
-Calculate statistics for each student (average, highest, lowest grade)
-Find class statistics (class average, top performer, students below average)
-Generate a formatted report
-
-Required Functions:
-
-add_student(students, name)
-add_grade(students, name, grade)
-calculate_student_average(grades)
-find_top_student(students)
-generate_report(students)
-
-Example Structure:
-pythonstudents = {
-    "Alice": [85, 92, 78, 96],
-    "Bob": [79, 85, 88, 82],
-    "Charlie": [92, 94, 89, 97]
-}
-
-# The report should show:
-# - Each student's average
-# - Class average
-# - Highest and lowest performing students
-# - Students who need improvement (below class average)
-"""
-def add_student(students, name):
-    """Add a new student to the system"""
-    if name not in students:
-        students[name] = []
-        return True
-    return False
-
-def add_grade(students, name, grade):
-    """Add a grade for a specific student"""
-    if name in students:
-        students[name].append(grade)
-        return True
-    return False
-
-def calculate_student_average(grades):
-    """Calculate average grade for a student"""
-    if not grades:
-        return 0
-    return sum(grades) / len(grades)
-
-def find_top_student(students):
-    """Find the student with the highest average"""
-    if not students:
-        return None
-    
-    top_student = None
-    highest_avg = -1
-    
-    for name, grades in students.items():
-        if grades:  # Only consider students with grades
-            avg = calculate_student_average(grades)
-            if avg > highest_avg:
-                highest_avg = avg
-                top_student = name
-    
-    return top_student, highest_avg
-
-def generate_report(students):
-    """Generate a comprehensive report"""
-    if not students:
-        print("No students in the system.")
-        return
-    
-    print("=" * 50)
-    print("STUDENT GRADE REPORT")
-    print("=" * 50)
-    
-    all_averages = []
-    student_averages = {}
-    
-    # Calculate individual student statistics
-    for name, grades in students.items():
-        if grades:
-            avg = calculate_student_average(grades)
-            highest = max(grades)
-            lowest = min(grades)
-            student_averages[name] = avg
-            all_averages.append(avg)
-            
-            print(f"\n{name}:")
-            print(f"  Grades: {grades}")
-            print(f"  Average: {avg:.2f}")
-            print(f"  Highest: {highest}")
-            print(f"  Lowest: {lowest}")
-        else:
-            print(f"\n{name}: No grades recorded")
-    
-    # Class statistics
-    if all_averages:
-        class_avg = sum(all_averages) / len(all_averages)
-        top_student, top_avg = find_top_student(students)
-        
-        print("\n" + "=" * 50)
-        print("CLASS STATISTICS")
-        print("=" * 50)
-        print(f"Class Average: {class_avg:.2f}")
-        print(f"Top Student: {top_student} ({top_avg:.2f})")
-        
-        # Students below average
-        below_avg = [name for name, avg in student_averages.items() if avg < class_avg]
-        if below_avg:
-            print(f"Students needing improvement: {', '.join(below_avg)}")
-        else:
-            print("All students are performing at or above class average!")
-
 
 
 

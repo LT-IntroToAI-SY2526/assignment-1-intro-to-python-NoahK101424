@@ -47,7 +47,6 @@ def factorial(n: int) -> int:
     while count < n:
         total *= n - count
         count+=1
-        n = n + count
     return total
 
 
@@ -65,15 +64,10 @@ def every_other(lst: List[T]) -> List[T]:
     Returns:
         a list of every of other item in the original list starting with the first
     """
-    arr = []
-    count = 0
-    for i in range(0, len(lst), 2):
-        arr[count] = lst[i]
-    return arr 
 
-    """Mr. berg solution: return lst[::2]
-    [start:stop:step]
-    """
+    return lst[::2]
+    #[start:stop:step]
+    
 
 def sum_list(lst: List[int]) -> int:
     """Takes a list of numbers, and returns the sum of the numbers in that list. Cannot
@@ -106,6 +100,7 @@ def mean(lst: List[int]) -> float:
         total += lst[i]
         count += 1
     return total/count
+# return sum_list(lst) / len(lst)
 
 
 def median(lst: List[int]) -> float:
@@ -120,9 +115,10 @@ def median(lst: List[int]) -> float:
     Returns:
         the median of the passed in list
     """
+
     if len(lst)%2 == 0:
-        return (lst[len(lst)%2] + lst[(len(lst)%2)+1])/2
-    return lst[len(lst)/2]
+        return int (lst[len(lst)%2] + lst[(len(lst)%2)-1])/2 #if lst else 0
+    return lst[len(lst)//2]
 
 def duck_duck_goose(lst: List[str]) -> List[str]:
     """Given an list of names (strings), play 'duck duck goose' with it, knocking out
@@ -146,9 +142,10 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     i = 0
     while(len(lst) > 2):
         if i%2==0 and i != 0:
-            i = lst.index(lst.pop(lst[i]))
+            i = lst.index(lst[i])
+            lst.pop(i)
         i += 1
-        if(lst[i] > len(lst)):
+        if(lst[i] == lst[len(lst)-1]):
             i = i%3
     return lst
 
