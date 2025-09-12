@@ -139,14 +139,35 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     Returns:
         the resulting list after playing duck duck goose
     """
+    """
+    My original code that DOES NOT WORK
     i = 0
     while(len(lst) > 2):
         if i%2==0 and i != 0:
             i = lst.index(lst[i])
             lst.pop(i)
         i += 1
-        if(lst[i] == lst[len(lst)-1]):
+        if(i == len(lst)):
             i = i%3
+    return lst
+    """
+
+    position = 0
+    current = "duck1"
+    while len(lst) > 2:
+        if current == "duck1":
+            current = "duck2"
+            position += 1
+        elif current == "duck2":
+            current = "goose"
+            position += 1
+        else: #current is goose
+            current = "duck1"
+            lst.pop(position)
+        
+        if position == len(lst):
+            position = 0
+
     return lst
 
 # this line causes the nested code to be skipped if the file is imported instead of run
