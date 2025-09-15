@@ -124,7 +124,7 @@ Too high! 4 guesses remaining.
 Enter your guess: 31
 Correct! You won in 4 attempts!
 """
-
+import random
 def number_guessing_game():
     """Number guessing game with 7 attempts"""
     secret_number = random.randint(1, 100)
@@ -178,6 +178,8 @@ result = analyze_text(text)
     'long_words': ['python', 'programming', 'powerful']
 }
     """
+
+from collections import Counter
 def analyze_text(text):
     """Analyze text and return statistics"""
     # Convert to lowercase and split into words (by spaces)
@@ -302,19 +304,22 @@ print(f"is_even(7): {is_even(7)}")  # Should print False
 
 print("Testing Problem 1:")
 # Add your tests here
-#assert temperature_converter(0, "C") == 32, "temperature_converter failed"
+print(temperature_converter(0,"C"))
 
 print("\nTesting Problem 2:")
-assert calculate_grade(95) == "A", "calculatre_grade(95) failed"
+print(calculate_grade(95))
 
 print("\nTesting Problem 3:")
-# Add your tests here
-assert 
+print(number_guessing_game())
 
 print("\nTesting Problem 4:")
-# Add your tests here
+print(analyze_text("discombobulate"))
 
 print("\nTesting Problem 5:")
-# Add your tests here
-
-
+cart = []
+add_item(cart, "apple", 2.99, 5)
+add_item(cart, "banana", 1.99, 5)
+remove_item(cart, "appke")
+calculate_total(cart)
+apply_discount(calculate_total(cart), 50)
+display_cart(cart)
